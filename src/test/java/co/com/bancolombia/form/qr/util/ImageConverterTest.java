@@ -1,0 +1,31 @@
+package co.com.bancolombia.form.qr.util;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+
+import org.apache.batik.transcoder.TranscoderException;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+
+
+@SpringBootTest
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = ImageConverter.class)
+public class ImageConverterTest {
+	
+	private final String imageQr = "PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iNTYuMDAwMDAwcHQiIGhlaWdodD0iNDUuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCA1Ni4wMDAwMDAgNDUuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CjxtZXRhZGF0YT4KQ3JlYXRlZCBieSBwb3RyYWNlIDEuMTYsIHdyaXR0ZW4gYnkgUGV0ZXIgU2VsaW5nZXIgMjAwMS0yMDE5CjwvbWV0YWRhdGE+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDQ1LjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIKZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIj4KPHBhdGggZD0iTTIyNSA0MzMgYy0xMSAtMiAtNDIgLTggLTcwIC0xNCAtNzQgLTE0IC04MCAtMjAgLTY1IC02MyA2IC0yMCAxNwotMzYgMjQgLTM2IDYgMCA1MiA5IDEwMSAxOSA1MCAxMSAxMjkgMjMgMTc4IDI3IDQ4IDQgODcgOCA4NyA5IDAgMSAtNSAxNiAtMTEKMzQgbC0xMSAzMSAtMTA2IC0xIGMtNTkgLTEgLTExNiAtMyAtMTI3IC02eiIvPgo8cGF0aCBkPSJNNDc1IDIyMyBjLTEzNyAtMzAgLTI3NiAtNjYgLTI4MCAtNzMgLTUgLTggMzIgLTExOCA0NiAtMTM0IDcgLTgKMjcwIDg2IDI5NiAxMDYgOSA3IDggMjAgLTUgNTUgLTE4IDQ4IC0yNCA1MyAtNTcgNDZ6Ii8+CjwvZz4KPC9zdmc+Cg==";
+
+	@Autowired
+	private ImageConverter actual;
+	
+	@Test
+	public void notNullOkTest() throws TranscoderException, IOException {
+		assertNotNull(actual.svg2Png(imageQr));
+	}
+
+}

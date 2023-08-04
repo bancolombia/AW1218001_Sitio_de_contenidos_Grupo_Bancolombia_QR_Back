@@ -1,0 +1,10 @@
+management.endpoints.web.base-path: "/monitor"
+management.endpoints.web.base-path.exposure.include: "health"
+server.servlet.context-path: "/portal-contenidos/form-qr"
+spring.application.name: ""
+spring.application.devtools.add-properties: ""
+logging.file.max-history: "3"
+logging.file.max-size: "2500kB"
+logging.pattern.dateformat: "yyyy-MM-dd HH:mm:ss.SSS"
+spring.messages.encoding: UTF-8
+

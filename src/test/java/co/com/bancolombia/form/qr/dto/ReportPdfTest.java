@@ -1,0 +1,59 @@
+package co.com.bancolombia.form.qr.dto;
+
+import co.com.bancolombia.form.qr.Constant;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+
+@SpringBootTest
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = ReportPdf.class)
+public class ReportPdfTest {
+	
+	private final String title = "title";
+	private final float qrImagefixedPositionBottom = 1f;
+	private final float qrImagefixedPositionLeft = 1f;
+	private final float scaleToFitHeight = 1f;
+	private final float scaleToFitWidth = 1f;
+	private final byte[] qrImage = "3zN8cFXE6TCacxAcjzV5EMcXnWVnI4N0yyda2cPC8pNF3sqNYMC9jejJmRB3oY9pir1O0qEpjdGa4r5BG20KX7L7AUWxZgRFWODkzLqkEaiSsFbvwYkSaoaXe6FtITFPV9i1dBOPyHPyyQ9gC83VFc20HQNDlZ1o9tPddnysAY2D8h0yd33d9tak7fcRsMcGnfm52u4RetLw1MCAhur1628wOJTnLs7yzipCiAPSEw7doqQLAeAQSBtd03dsdt98uyTXEfgB8NXhwd8SpvNFjSGrbBDMcGjKhraV8KMmMFW2S0uffQGTAuKosED0UFZS6sOuC2XHObD4TsCvc8s90rPKbMv6ohbRNole7OEcJmpQS8vhdNgy7D68JNNcTWTTxbScIi1E4va7KsgLa9bj8wa7Ocr8DjUOp1y0FAYovrKz0KdI6ylwVAhSsW2xegn1iyrLOrF4QTJVFlUtvRRKchXggEIpjoTmzCcbU8VdmZzskTkJNocTwNq6sa6TOnl15yT53Zz1upEh3ZmZTpq22l76UvkO7GoKxiYRY03Sq7c7Toxa0SZov6MEQDVXyY2W2lNwAFM57EXjZ9IKGTaIE05gayEaFkJ4qCV8cmHqcfB30xy0btqzuc1mrGXmqhN7nv1rWCOPYOpKDNFebRuNsj2AXkAMm83j3eknBLoJDuYrnDELnN3o2Rj9l8VQjSkjeZMUJ6iRZlCLqe1ft4LN8Orw4yvwEl8WnmMXjSGZRXrxKliOQx5cqklOGXPhHvnj7ipvt4f6p8yxulogOGMypxi2myz0enEdwBgpBaqIGYZ5PRjgRWtf3L9CpFTCCCOfzEn7JAW7pPgwq4QKnNwCr8QjO1cq0gCCKMuvhwqUnUmKpK1N7mjOkvZiYVngHbN03CYTWJjdMdU37lzGRLooiebtyi01ytpvAxGw2EKdsq9IINvhKusvGtUvFIt6eILeN7RApn41Jm3KOHhNPpWuRImQdHA1rra5cuMPCvop"
+			.getBytes();
+	private final byte[] backGroundImage = "3zN8cFXE6TCacxAcjzV5EMcXnWVnI4N0yyda2cPC8pNF3sqNYMC9jejJmRB3oY9pir1O0qEpjdGa4r5BG20KX7L7AUWxZgRFWODkzLqkEaiSsFbvwYkSaoaXe6FtITFPV9i1dBOPyHPyyQ9gC83VFc20HQNDlZ1o9tPddnysAY2D8h0yd33d9tak7fcRsMcGnfm52u4RetLw1MCAhur1628wOJTnLs7yzipCiAPSEw7doqQLAeAQSBtd03dsdt98uyTXEfgB8NXhwd8SpvNFjSGrbBDMcGjKhraV8KMmMFW2S0uffQGTAuKosED0UFZS6sOuC2XHObD4TsCvc8s90rPKbMv6ohbRNole7OEcJmpQS8vhdNgy7D68JNNcTWTTxbScIi1E4va7KsgLa9bj8wa7Ocr8DjUOp1y0FAYovrKz0KdI6ylwVAhSsW2xegn1iyrLOrF4QTJVFlUtvRRKchXggEIpjoTmzCcbU8VdmZzskTkJNocTwNq6sa6TOnl15yT53Zz1upEh3ZmZTpq22l76UvkO7GoKxiYRY03Sq7c7Toxa0SZov6MEQDVXyY2W2lNwAFM57EXjZ9IKGTaIE05gayEaFkJ4qCV8cmHqcfB30xy0btqzuc1mrGXmqhN7nv1rWCOPYOpKDNFebRuNsj2AXkAMm83j3eknBLoJDuYrnDELnN3o2Rj9l8VQjSkjeZMUJ6iRZlCLqe1ft4LN8Orw4yvwEl8WnmMXjSGZRXrxKliOQx5cqklOGXPhHvnj7ipvt4f6p8yxulogOGMypxi2myz0enEdwBgpBaqIGYZ5PRjgRWtf3L9CpFTCCCOfzEn7JAW7pPgwq4QKnNwCr8QjO1cq0gCCKMuvhwqUnUmKpK1N7mjOkvZiYVngHbN03CYTWJjdMdU37lzGRLooiebtyi01ytpvAxGw2EKdsq9IINvhKusvGtUvFIt6eILeN7RApn41Jm3KOHhNPpWuRImQdHA1rra5cuMPCvop"
+			.getBytes();
+	private final byte[] backGroundImageTwo = "3zN8cFXE6TCacxAcjzV5EMcXnWVnI4N0yyda2cPC8pNF3sqNYMC9jejJmRB3oY9pir1O0qEpjdGa4r5BG20KX7L7AUWxZgRFWODkzLqkEaiSsFbvwYkSaoaXe6FtITFPV9i1dBOPyHPyyQ9gC83VFc20HQNDlZ1o9tPddnysAY2D8h0yd33d9tak7fcRsMcGnfm52u4RetLw1MCAhur1628wOJTnLs7yzipCiAPSEw7doqQLAeAQSBtd03dsdt98uyTXEfgB8NXhwd8SpvNFjSGrbBDMcGjKhraV8KMmMFW2S0uffQGTAuKosED0UFZS6sOuC2XHObD4TsCvc8s90rPKbMv6ohbRNole7OEcJmpQS8vhdNgy7D68JNNcTWTTxbScIi1E4va7KsgLa9bj8wa7Ocr8DjUOp1y0FAYovrKz0KdI6ylwVAhSsW2xegn1iyrLOrF4QTJVFlUtvRRKchXggEIpjoTmzCcbU8VdmZzskTkJNocTwNq6sa6TOnl15yT53Zz1upEh3ZmZTpq22l76UvkO7GoKxiYRY03Sq7c7Toxa0SZov6MEQDVXyY2W2lNwAFM57EXjZ9IKGTaIE05gayEaFkJ4qCV8cmHqcfB30xy0btqzuc1mrGXmqhN7nv1rWCOPYOpKDNFebRuNsj2AXkAMm83j3eknBLoJDuYrnDELnN3o2Rj9l8VQjSkjeZMUJ6iRZlCLqe1ft4LN8Orw4yvwEl8WnmMXjSGZRXrxKliOQx5cqklOGXPhHvnj7ipvt4f6p8yxulogOGMypxi2myz0enEdwBgpBaqIGYZ5PRjgRWtf3L9CpFTCCCOfzEn7JAW7pPgwq4QKnNwCr8QjO1cq0gCCKMuvhwqUnUmKpK1N7mjOkvZiYVngHbN03CYTWJjdMdU37lzGRLooiebtyi01ytpvAxGw2EKdsq9IINvhKusvGtUvFIt6eILeN7RApn41Jm3KOHhNPpWuRImQdHA1rra5cuMPCvop"
+			.getBytes();
+
+	private ReportPdf actual;
+
+	@Before
+	public void setUp() {
+		
+		actual = new ReportPdf();
+
+		actual.setQrImage(qrImage);
+		actual.setQrImagefixedPositionBottom(qrImagefixedPositionBottom);
+		actual.setQrImagefixedPositionLeft(qrImagefixedPositionLeft);
+		actual.setScaleToFitHeight(scaleToFitHeight);
+		actual.setScaleToFitWidth(scaleToFitWidth);
+		actual.setTitle(title);
+		actual.setBackGroundImage(backGroundImage);
+		actual.setBackGroundImageTwo(backGroundImageTwo);
+	}
+
+	@Test
+	public void toStringOkTest() {
+		assertEquals(String.format(
+						"ReportPdf [title=%s, qrImage=%s, qrImagefixedPositionLeft=%s, qrImagefixedPositionBottom=%s, scaleToFitWidth=%s, scaleToFitHeight=%s, backGroundImage=%s, backGroundImageTwo=%s, page=%s]",
+						actual.getTitle(), ((actual.getQrImage() == null || actual.getQrImage().length == 0) ? Constant.MESSAGE_ERROR_FILE_NOT_GENERATED_OR_ERROR : Constant.MESSAGE_FILE_GENERATED_SUCCESFULLY), actual.getQrImagefixedPositionLeft(), actual.getQrImagefixedPositionBottom(),
+						actual.getScaleToFitWidth(), actual.getScaleToFitHeight(), ((actual.getBackGroundImage() == null || actual.getBackGroundImage().length == 0) ? Constant.MESSAGE_ERROR_FILE_NOT_GENERATED_OR_ERROR : Constant.MESSAGE_FILE_GENERATED_SUCCESFULLY), ((actual.getBackGroundImageTwo() == null || actual.getBackGroundImageTwo().length == 0) ? Constant.MESSAGE_ERROR_FILE_NOT_GENERATED_OR_ERROR : Constant.MESSAGE_FILE_GENERATED_SUCCESFULLY), actual.getPage()),
+				actual.toString());
+	}
+
+
+}
